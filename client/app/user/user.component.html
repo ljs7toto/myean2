@@ -1,0 +1,22 @@
+<p>
+
+  유저이름 :{{userName}} / 유저나이 :{{userAge}}
+  <br>
+  <br>
+  <input type="text" [(ngModel)]="userName"/>
+  <input type="text" [(ngModel)]="userAge"/>
+  <button (click)="addUser()">유저추가</button>
+  <br>
+  <input type="text" [(ngModel)]="userNum"/>
+  <button (click)="updateUser()">유저수정</button>
+  <br>
+  <input type="text" [(ngModel)]="userNum"/>
+  <button (click)="deleteUser()">유저삭제</button>
+</p>
+
+
+<ul>
+  <li *ngFor="let un of userNameList"> 
+    {{un.name}}, {{un.age}}
+  </li>
+</ul>

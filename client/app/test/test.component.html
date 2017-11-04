@@ -1,0 +1,13 @@
+<p>test works!</p>
+이름 : <input type="text" [(ngModel)]="name"/>
+<button (click)="alertName()">클릭</button>
+<br>
+<br>
+Num1 : <input type="text" [(ngModel)]="num1" />
+op : <input type="text" [(ngModel)]="op">
+Num2 : <input type="text" [(ngModel)]="num2" />
+= <input type="text" [(ngModel)]="result" />
+<button (click)="plus()">plus</button>
+<br>
+<br>
+<button [style.color]="isRed?'red':'black'">버튼</button>
