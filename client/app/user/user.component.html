@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
 
   유저이름 :{{userName}} / 유저나이 :{{userAge}}
   <br>
@@ -19,4 +19,37 @@
   <li *ngFor="let un of userNameList"> 
     {{un.name}}, {{un.age}}
   </li>
-</ul>
+</ul> -->
+
+<!--부모창에서 자식에서 값을 전달하는 방식-->
+<!-- <app-user-list [userList]="userList" (outputTest)="outputTest($event)"></app-user-list> -->
+<app-user-insert (outputUser)="outputUser($event)"></app-user-insert>
+
+<!-- <button (click)="selectUserList()">getUsers</button> -->
+
+<button (click)="getUsers()">getUsers</button>
+<button (click)="addUser()">addUsers</button>
+
+<div class="container">
+  <h2>User List</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+          <th>userNo</th>
+          <th>userName</th>
+          <th>userId</th>
+          <th>userPwd</th>
+          <th>완료여부</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let un of userList">
+          <td><input type="text" value="{{un.userNo}}" disabled=true /></td>
+          <td><input type="text" [(ngModel)]="un.userName" /></td>
+          <td><input type="text" [(ngModel)]="un.userId" /></td>
+          <td><input type="text" [(ngModel)]="un.userPwd" /></td>
+          <td><input type="checkbox" [checked]="un.complete" /></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
