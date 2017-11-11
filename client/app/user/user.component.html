@@ -23,12 +23,21 @@
 
 <!--부모창에서 자식에서 값을 전달하는 방식-->
 <!-- <app-user-list [userList]="userList" (outputTest)="outputTest($event)"></app-user-list> -->
-<app-user-insert (outputUser)="outputUser($event)"></app-user-insert>
+<div>
+  name : <input type="text" [(ngModel)]="searchUser.userName"/>
+  id : <input type="text" [(ngModel)]="searchUser.userId"/>
+  pwd : <input type="text" [(ngModel)]="searchUser.userPwd"/>
+  complete : <input type="checkbox" [(ngModel)]="searchUser.complete"/>
+  <button (click)="getUsers()">getUsers</button>
+  <button (click)="getUsers2()">getUsers2</button>
+  <button (click)="showHideAddUserDiv()">{{addUserBtnStr}}</button> <br><br>
+</div>
 
+<app-user-insert *ngIf="addUserShow"></app-user-insert>
 <!-- <button (click)="selectUserList()">getUsers</button> -->
-
+<!-- 
 <button (click)="getUsers()">getUsers</button>
-<button (click)="addUser()">addUsers</button>
+<button (click)="addUser()">addUsers</button> -->
 
 <div class="container">
   <h2>User List</h2>

@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+
+<div>
+  <button (click)="testAsync()">비동기 테스트</button>
+  <button (click)="testSync()">동기 테스트</button>
+  <button (click)="testPromise()">약속 테스트</button>
+</div>
+
+<ul>
+  <li *ngFor="let log of logList">
+        {{log.num}} : {{log.text}}
+  </li>
+</ul>

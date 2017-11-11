@@ -15,13 +15,19 @@ import { TestComponent } from './app/test/test.component';
 import { UserComponent } from './app/user/user.component';
 import { UserListComponent } from './app/user-list/user-list.component';
 import { UserInsertComponent } from './app/user-insert/user-insert.component';
+import { FunctionTestComponent } from './app/function-test/function-test.component';
+import { ArrowFunctionComponent } from './app/arrow-function/arrow-function.component';
+import { PromiseTestComponent } from './app/promise-test/promise-test.component';
 enableProdMode();
 
 const routing = RouterModule.forRoot([
     { path: '',      component: WelcomeComponent },
     { path: 'account-list', component: AccountListComponent },
     { path: 'test', component: TestComponent},
-    { path: 'userlist', component: UserComponent}
+	{ path: 'userlist', component: UserComponent},
+	{ path: 'functiontest', component: FunctionTestComponent},
+	{ path: 'arrowfunction', component: ArrowFunctionComponent},
+	{ path: 'promise', component: PromiseTestComponent}
 ]);
 
 @NgModule({
@@ -36,7 +42,10 @@ const routing = RouterModule.forRoot([
     			   TestComponent,
     			   UserComponent,
     			   UserListComponent,
-    			   UserInsertComponent
+    			   UserInsertComponent,
+    			   FunctionTestComponent,
+    			   ArrowFunctionComponent,
+    			   PromiseTestComponent
              ],
     //providers: [],
     bootstrap: [AppComponent]
