@@ -4,10 +4,13 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
  
 import {User} from'./user';
+import {UserHistory} from'./userhis';
+
 @Injectable()
 export class UserDataService extends CommonServiceService{
   private usersUrl:string="api/users";
- 
+  private userHisUrl = "/api/userhis/";
+
   constructor(protected _http:Http) {
     super(_http);
   }
@@ -20,8 +23,13 @@ export class UserDataService extends CommonServiceService{
     }
     return super.getJson(url+paramStr);
   }
+
+  getUserHis(userNo:number):Observable<UserHistory[]>{
+    alert(this.userHisUrl + userNo);
+    return super.getJson(this.userHisUrl+userNo);
+  }
  
-  // addUser(addUser:User): Observable<User[]> {
-  //   return super.postJson(this.usersUrl,addUser);
-  // }
+  addUser(addUser:User): Observable<User[]> {
+    return super.postJson(this.usersUrl,addUser);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from './user-data-service.service';
 import { User } from './user';
+import {UserHistory} from'./userhis';
 
 @Component({
   selector: 'app-user',
@@ -14,8 +15,12 @@ export class UserComponent implements OnInit {
   addUserShow : boolean = false;
   addUserBtnStr: string = 'Show Add User Div';
   title:string = 'User List';
-  
-  constructor(private uds: UserDataService ) { }
+  showDialog:boolean= false;
+  userHisList : Array<UserHistory> = [];
+
+  constructor(private uds: UserDataService ) {
+    this.getUsers();
+   }
 
   ngOnInit() {
     
@@ -32,8 +37,6 @@ export class UserComponent implements OnInit {
     }
   }
 
-
-
   getUsers():void{
     this.uds.getUsers(this.searchUser).subscribe(
       datas => {
@@ -48,8 +51,30 @@ export class UserComponent implements OnInit {
 
   addUser(user:User):void{
     console.log(user);
+    this.uds.addUser(user).subscribe( 
+      datas => {
+        console.log(datas);
+        this.userList = datas["list"];
+      },
+      error => {
+        this.errorMsg = <any>error;
+        alert(this.errorMsg);
+      });
   }
 
+  showUserHis(userNo:number):void{
+    this.showDialog = !this.showDialog
+
+    this.uds.getUserHis(userNo).subscribe(
+      datas => {
+        console.log(datas);
+        this.userHisList = datas["list"];
+      },
+      error => {
+        this.errorMsg = <any>error;
+        alert(this.errorMsg);
+      });
+  }
 }
 
 

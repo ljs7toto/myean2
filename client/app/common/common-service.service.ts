@@ -22,6 +22,12 @@ export class CommonServiceService {
                       .catch(this.handleError);
   }
 
+  protected postJson(url:string, paramObj:Object):Observable<any>{
+    return this._http.post(url,paramObj,{headers:this.headers})
+                      .map(this.extractJson)
+                      .catch(this.handleError);
+  }
+
   private extractJson(res: Response) {
     let result = res.json();
     if(result.error){
