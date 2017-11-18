@@ -9,7 +9,7 @@ import {UserHistory} from'./userhis';
 @Injectable()
 export class UserDataService extends CommonServiceService{
   private usersUrl:string="api/users";
-  private userHisUrl = "/api/userhis/";
+  private userHisUrl = this.usersUrl + "/his/";
 
   constructor(protected _http:Http) {
     super(_http);
@@ -25,7 +25,7 @@ export class UserDataService extends CommonServiceService{
   }
 
   getUserHis(userNo:number):Observable<UserHistory[]>{
-    alert(this.userHisUrl + userNo);
+    // alert(this.userHisUrl + userNo);
     return super.getJson(this.userHisUrl+userNo);
   }
  
